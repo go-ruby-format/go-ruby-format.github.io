@@ -1,0 +1,31 @@
+baseURL = "https://go-ruby-format.github.io/"
+title = "go-ruby-format"
+disableKinds = ["taxonomy", "term", "RSS", "sitemap", "404"]
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[[params.phases]]
+  name = "Conversion directives"
+  status = "ready"
+  blurb = "Every MRI conversion: integers `d`/`i`/`u`/`b`/`o`/`x`/`X`, floats `f`/`e`/`E`/`g`/`G`/`a`/`A`, `s` string, `p` inspect, `c` character, and the `%%` literal — each matching reference Ruby's rounding, padding and sign rules."
+[[params.phases]]
+  name = "Flags, width & precision"
+  status = "ready"
+  blurb = "All flags (`-` left-justify, `+` and space sign, `0` zero-pad, `#` alternate form) with width and precision, including the `*` form that reads width/precision from an argument."
+[[params.phases]]
+  name = "Named & positional refs"
+  status = "ready"
+  blurb = "Named references `%<name>s` and `%{name}` resolved against a hash, and absolute `n$` argument indexing — matching MRI's mixing rules and its errors for clashing styles."
+[[params.phases]]
+  name = "Bignum & hex-float"
+  status = "ready"
+  blurb = "Arbitrary-precision integer output (`%d` on a Bignum), and IEEE hex-float (`%a` / `%A`) emitted exactly as MRI's `sprintf.c` does, down to the mantissa digits and exponent."
+[[params.phases]]
+  name = "Error taxonomy"
+  status = "ready"
+  blurb = "MRI's full set of `ArgumentError` / `KeyError` / `TypeError` cases — too few arguments, unknown directive, mixed numbered/unnumbered, missing named key — surfaced as Go errors."
+[[params.phases]]
+  name = "Differential oracle & coverage"
+  status = "ready"
+  blurb = "A wide format-string corpus rendered both here and by the system `ruby`, compared byte-for-byte against MRI; 100% coverage, gofmt + go vet clean, green across all six 64-bit Go arches and three OSes."
